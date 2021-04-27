@@ -1,0 +1,46 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03-feb-2021, 21:12:43
+    Author     : urii2
+*/
+
+body{
+    background-color: gold;
+}
+
+div{
+    background-color: black;
+    color: gold;
+    width: 500px;
+    text-align: center;
+    margin-left: 500px;
+    padding: 20px;
+}
+
+h1{
+    color: black;
+    text-align: center
+}
+
+h2{
+    text-align: center
+    
+}
+
+div h1{
+    color: gold
+}
+
+a{
+    color: gold
+}
+button a{
+    color: black
+}
+input{
+    color:black
+}
