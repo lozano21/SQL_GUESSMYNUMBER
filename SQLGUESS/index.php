@@ -14,7 +14,28 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>Mòdul 07 UF's 3 i 4</title>
         <link rel="stylesheet" href="mystyle.css" >
-        <script src="js/my_functions.js"></script>
+        <script>
+            window.onload = function () {
+                showDataBase("Cap");
+            };
+
+
+            function showDataBase(str) {
+                if (str === "") {
+                    document.getElementById("txtHint").innerHTML = "";
+                    return;
+                } else {
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function () {
+                        if (this.readyState === 4 && this.status === 200) {
+                            document.getElementById("txtHint").innerHTML = this.responseText;
+                        }
+                    };
+                    xmlhttp.open("GET", "Ajax.php?a=" + str, true);
+                    xmlhttp.send();
+                }
+            }
+        </script>
     </head>
     <body onload="showEstadistiques('Totes')">
         <?php
@@ -32,8 +53,15 @@ and open the template in the editor.
         echo "<h2>Estadistiques</h2>";
         $db = new DatabaseProc("localhost", "root", "Hockey21$", "m07uf3");
         $db->connect();
+        $t = $db->Tipus();
         try {
-
+            echo "Modalitat:  ";
+            echo "<select onchange='showDataBase(this.value)'>";
+            echo "<option value='ninguno'>Tots</option>";
+            for ($i = 0; $i < count($t); $i++) {
+                echo "<option value='" . $t[$i][0] . "'>" . $t[$i][0] . "</option>";
+            }
+            echo "</select>";
             echo DatabaseProc::TABLE_START;
             $a = $db->selectAll();
             ?>
@@ -54,6 +82,7 @@ and open the template in the editor.
             </form>
                     <?php
                     $db->showAll($a);
+                    echo "<div id='txtHint'></div>";
                 } catch (Exception $error) {
                     echo "connection failed: " . $error->getMessage();
                 }

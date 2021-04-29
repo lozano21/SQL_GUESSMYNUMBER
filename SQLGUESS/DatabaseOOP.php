@@ -101,5 +101,14 @@ class DatabaseOOP extends DatabaseConnection {
         }
         
     }
+    
+    function getTypes(){
+        $sql = "SELECT DISTINCT modalitat from estadistiques";
+        $result = $this->connection->query($sql, MYSQLI_USE_RESULT);
+        return $result->fetch_all();
+        
+        
+        
+    }
 
 }

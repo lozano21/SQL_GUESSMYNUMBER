@@ -10,7 +10,7 @@ include_once 'DatabaseConnection.php';
 
 class DatabasePDO extends DatabaseConnection {
 
-    const TABLE_START = "<table align='center'; style='border: solid 1px black;'><tr style='background: grey;'><th>Id</th><th>Modalitat</th><th>Nivell</th><th>Data</th><th>Intents</th></tr>";
+    const TABLE_START = "<table align='center'; style='border: solid 2px black;'><tr style='background: grey;'><th>Id</th><th>Modalitat</th><th>Nivell</th><th>Data</th><th>Intents</th></tr>";
     const TABLE_END = "</table>";
 
     private $database;

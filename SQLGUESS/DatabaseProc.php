@@ -9,7 +9,7 @@ include_once 'DatabaseConnection.php';
  */
 class DatabaseProc extends DatabaseConnection {
 
-    const TABLE_START = "<table align='center'; style='border: solid 1px black;'><tr style='background: grey;'><th>Id</th><th>Modalitat</th><th>Nivell</th><th>Data</th><th>Intents</th></tr>";
+    const TABLE_START = "<table align='center'; style='border: solid 1px black; width:100%'><tr style='background: grey;'><th>Id</th><th>Modalitat</th><th>Nivell</th><th>Data</th><th>Intents</th></tr>";
     const TABLE_END = "</table>";
 
     private $database;
@@ -99,6 +99,15 @@ class DatabaseProc extends DatabaseConnection {
         if ($this->connection != null) {
             $result = $this->connection->query($sql, MYSQLI_USE_RESULT);
         }
+        
+    }
+    
+    function Tipus(){
+        $sql = "SELECT DISTINCT modalitat from estadistiques";
+        $result = $this->connection->query($sql, MYSQLI_USE_RESULT);
+        return $result->fetch_all();
+        
+        
         
     }
 
